@@ -5,9 +5,9 @@ import { generateResponse } from '#utils/api'
 const router = express.Router()
 
 router.post('/', async (req, res) => {
-    const { username, password } = req.body
+    const { email, password, username } = req.body
 
-    generateResponse(res, await AuthController.login({ username, password }))
+    return generateResponse(res, await AuthController.signup({ email, password, username }))
 })
 
 export default router
