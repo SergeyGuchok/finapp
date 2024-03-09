@@ -1,11 +1,10 @@
-import { verifyJwt } from '#utils/api'
+import {generateResponse, verifyJwt} from '#utils/api'
 
 const authMiddleware = (req, res, next) => {
     const { authorization } = req.headers
 
     if (!authorization) {
-        req.user = null
-        return next()
+        return generateResponse(res, {status: 401, errors: ['token is required'] })
     }
 
     const token = authorization.split(' ')[1]
@@ -17,7 +16,7 @@ const authMiddleware = (req, res, next) => {
         return next()
     }
 
-    return res.status(401).json('token expired')
+    return generateResponse(res, {status: 401, errors: ['token is expired'] })
 }
 
 export default authMiddleware
