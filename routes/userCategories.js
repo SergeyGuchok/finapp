@@ -11,7 +11,7 @@ router.get('/', async (req, res) => {
     return generateResponse(res, await UserCategoryController.getUserCategoriesByUsername({ username }))
 })
 
-router.post('/', async (req, res) => {
+router.post('/add', async (req, res) => {
     const { data } = req.body
     const { user } = req
     const { username } = user
@@ -37,4 +37,3 @@ router.delete('/:categoryId', async (req, res) => {
 })
 
 export default router
-

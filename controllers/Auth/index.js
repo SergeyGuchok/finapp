@@ -18,8 +18,8 @@ class AuthController {
                 return { status: 400, errors: ['Wrong username or password'] }
             }
 
-            const accessToken = signJwt({ username }, '1m')
-            const refreshToken = signJwt({ username }, '1m')
+            const accessToken = signJwt({ username }, '7d')
+            const refreshToken = signJwt({ username }, '30d')
 
             return { status: 200, content: { user, accessToken, refreshToken } }
         } catch (e) {
