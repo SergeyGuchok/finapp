@@ -4,6 +4,9 @@ module.exports = {
     commonjs: true,
     es2021: true,
   },
+  plugins: [
+    '@stylistic'
+  ],
   extends: ['airbnb-base', 'prettier'],
   overrides: [
     {
@@ -25,5 +28,6 @@ module.exports = {
     'no-undef': 'off',
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
+    '@stylistic/eol-last': ['error', 'always']
   },
 };
