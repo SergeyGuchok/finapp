@@ -1,8 +1,8 @@
-import Colors from '#models/Colors'
+import ColorsModel from '#models/colors'
 
 class ColorsService {
     constructor() {
-        this.ColorsModel = Colors
+        this.ColorsModel = ColorsModel
     }
 
     async getColors () {
