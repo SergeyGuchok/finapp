@@ -1,21 +1,16 @@
-import { DataTypes } from "sequelize";
+import { DataTypes } from 'sequelize'
 import sequelize from "#database/index";
 
-const Category = sequelize.define('Category', {
+const Balance = sequelize.define('Balances', {
     id: {
         primaryKey: true,
         autoIncrement: true,
         type: DataTypes.INTEGER,
         allowNull: false,
     },
-    parent_id: {
+    user_id: {
         type: DataTypes.INTEGER,
-    },
-    type: {
-        type: DataTypes.ENUM,
         allowNull: false,
-        values: ['income', 'expenses'],
-        defaultValue: 'income',
     },
     name: {
         type: DataTypes.STRING,
@@ -24,17 +19,17 @@ const Category = sequelize.define('Category', {
     color_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        defaultValue: 1,
     },
-    icon: {
-        type: DataTypes.STRING,
+    balance: {
+        type: DataTypes.DECIMAL(15, 2),
+        defaultValue: 0.00,
         allowNull: false,
-    }
+    },
 }, {
-    tableName: 'Categories',
+    tableName: 'Colors',
     timestamps: false,
     createdAt: false,
     updatedAt: false,
 })
 
-export default Category
+export default Balance

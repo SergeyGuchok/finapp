@@ -36,4 +36,20 @@ router.delete('/:categoryId', async (req, res) => {
     return generateResponse(res, await UserCategoryController.deleteCategoryById({ username, categoryId }))
 })
 
+router.post('/archive/:categoryId', async (req, res) => {
+    const { user } = req
+    const { username } = user
+    const { categoryId } = req.params
+
+    return generateResponse(res, await UserCategoryController.archiveUserCategoryById({ username, categoryId }))
+})
+
+router.post('/unarchive/:categoryId', async (req, res) => {
+    const { user } = req
+    const { username } = user
+    const { categoryId } = req.params
+
+    return generateResponse(res, await UserCategoryController.unarchiveUserCategoryById({ username, categoryId }))
+})
+
 export default router

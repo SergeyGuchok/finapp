@@ -7,6 +7,8 @@ import db from '#database/index'
 import loginRoute from '#routes/login'
 import signupRoute from '#routes/singup'
 import userCategoriesRoute from '#routes/userCategories'
+import colorsRoute from '#routes/colors'
+import balancesRoute from '#routes/balances'
 import authMiddleware from "#middlewares/auth";
 
 import('#models/index')
@@ -24,6 +26,8 @@ app.use(cors({
 }))
 
 app.use('/api/categories', authMiddleware, userCategoriesRoute)
+app.use('/api/balances', authMiddleware, balancesRoute)
+app.use('/api/colors', authMiddleware, colorsRoute)
 app.use('/api/login', loginRoute)
 app.use('/api/signup', signupRoute)
 

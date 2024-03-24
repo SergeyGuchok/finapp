@@ -25,6 +25,22 @@ class UserCategoryService {
             where: { user_id: userId, categoryId }
         })
     }
+
+    async archiveUserCategoryById ({ categoryId }) {
+        return this.UserCategoryModel.update({
+            is_archived: 1,
+        }, {
+            where: { id: categoryId }
+        })
+    }
+
+    async unarchiveUserCategoryById ({ categoryId }) {
+        return this.UserCategoryModel.update({
+            is_archived: 0,
+        }, {
+            where: { id: categoryId }
+        })
+    }
 }
 
 export default new UserCategoryService()
