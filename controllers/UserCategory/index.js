@@ -16,7 +16,7 @@ class UseCategoryController {
             const categoriesIds = userCategories.map(userC => userC.category_id)
             const categories = await this.CategoryService.getCategoriesByIds({ ids: categoriesIds })
 
-            return { status: 200, content: { categories } }
+            return { status: 200, content:  categories  }
         } catch (e) {
             return { status: 400, errors: [e] }
         }
@@ -61,7 +61,7 @@ class UseCategoryController {
             }
 
             await this.CategoryService.deleteCategoryById({ categoryId })
-            await this.UserCategoryService.deleteCategoryById({ categoryId })
+            await this.UserCategoryService.deleteCategoryById({ categoryId, userId: user.id })
 
             return { status: 200, content: 'Category deleted' }
         } catch (e) {

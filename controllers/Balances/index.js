@@ -1,7 +1,7 @@
 import BalancesService from '#services/Balances/index'
 import UserService from '#services/User/index'
 
-class ColorsController {
+class BalancesController {
     constructor() {
         this.BalancesService = BalancesService
         this.UserService = UserService
@@ -9,7 +9,8 @@ class ColorsController {
 
     async getUserBalances({ username }) {
         try {
-            const balances = await this.BalancesService.getUserBalancesByUsername({ username })
+            const { id } = await this.UserService.getUserByUsername({ username })
+            const balances = await this.BalancesService.getUserBalancesByUsername({ userId: id })
 
             return { status: 200, content: balances }
         } catch (e) {
@@ -17,11 +18,11 @@ class ColorsController {
         }
     }
 
-    async createUserBalance ({ username, name, colorId, balance = 0.00  }) {
+    async createUserBalance ({ username, balance = 0.00, ...data  }) {
         try {
             const { id } = await this.UserService.getUserByUsername({ username })
 
-            await this.BalancesService.createUserBalance({ userId: id, name, colorId, balance })
+            await this.BalancesService.createUserBalance({ userId: id, balance, ...data })
 
             return { status: 200, content: 'Balance created' }
         } catch (e) {
@@ -56,4 +57,4 @@ class ColorsController {
     }
 }
 
-export default new ColorsController()
+export default new BalancesController()

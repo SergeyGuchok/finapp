@@ -27,7 +27,7 @@ router.post('/', async (req, res) => {
     generateResponse(res, await BalancesController.createUserBalance({ username, ...data }))
 })
 
-router.post('/:balanceId', async (req, res) => {
+router.put('/:balanceId', async (req, res) => {
     const { data } = req.body
     const { balanceId } = req.params
 
