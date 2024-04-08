@@ -19,7 +19,7 @@ router.post('/add', async (req, res) => {
     return generateResponse(res, await UserCategoryController.createUserCategory({ username, data }))
 })
 
-router.post('/:categoryId', async (req, res) => {
+router.put('/:categoryId', async (req, res) => {
     const { data } = req.body
     const { user } = req
     const { username } = user
@@ -36,7 +36,7 @@ router.delete('/:categoryId', async (req, res) => {
     return generateResponse(res, await UserCategoryController.deleteCategoryById({ username, categoryId }))
 })
 
-router.post('/archive/:categoryId', async (req, res) => {
+router.put('/archive/:categoryId', async (req, res) => {
     const { user } = req
     const { username } = user
     const { categoryId } = req.params
@@ -44,7 +44,7 @@ router.post('/archive/:categoryId', async (req, res) => {
     return generateResponse(res, await UserCategoryController.archiveUserCategoryById({ username, categoryId }))
 })
 
-router.post('/unarchive/:categoryId', async (req, res) => {
+router.put('/unarchive/:categoryId', async (req, res) => {
     const { user } = req
     const { username } = user
     const { categoryId } = req.params

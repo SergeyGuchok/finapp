@@ -5,12 +5,12 @@ class BalancesService {
         this.BalancesModel = BalancesModel
     }
 
-    async getUserBalancesByUsername ({ username }) {
-        return this.BalancesModel.findAll({ where: { username } })
+    async getUserBalancesByUsername ({ userId }) {
+        return this.BalancesModel.findAll({ where: { user_id: userId } })
     }
 
-    async createUserBalance ({ userId, balance, colorId, name }) {
-        return this.BalancesModel.create({ user_id: userId, balance, color_id: colorId, name })
+    async createUserBalance ({ userId, balance, ...data }) {
+        return this.BalancesModel.create({ user_id: userId, balance, ...data  })
     }
 
     async updateUserBalance ({ data, balanceId }) {

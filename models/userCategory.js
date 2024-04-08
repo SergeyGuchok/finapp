@@ -1,7 +1,7 @@
 import { DataTypes } from 'sequelize'
 import sequelize from "#database/index";
 
-const User = sequelize.define('UserCategory', {
+const User = sequelize.define('UsersCategories', {
     id: {
         primaryKey: true,
         autoIncrement: true,
@@ -17,7 +17,7 @@ const User = sequelize.define('UserCategory', {
         type: DataTypes.INTEGER,
     }
 }, {
-    tableName: 'UserCategories',
+    tableName: 'UsersCategories',
     timestamps: false,
     createdAt: false,
     updatedAt: false,

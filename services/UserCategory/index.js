@@ -17,12 +17,12 @@ class UserCategoryService {
     }
 
     async getUserCategoryByCategoryId ({ categoryId }) {
-        return this.UserCategoryModel.find({ where: { category_id: categoryId } })
+        return this.UserCategoryModel.findOne({ where: { category_id: categoryId } })
     }
 
     async deleteCategoryById ({ categoryId, userId }) {
         return this.UserCategoryModel.destroy({
-            where: { user_id: userId, categoryId }
+            where: { user_id: userId, category_id: categoryId }
         })
     }
 

@@ -26,7 +26,7 @@ const Balance = sequelize.define('Balances', {
         allowNull: false,
     },
 }, {
-    tableName: 'Colors',
+    tableName: 'Balances',
     timestamps: false,
     createdAt: false,
     updatedAt: false,
