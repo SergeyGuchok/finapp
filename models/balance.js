@@ -25,6 +25,10 @@ const Balance = sequelize.define('Balances', {
         defaultValue: 0.00,
         allowNull: false,
     },
+    icon: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    }
 }, {
     tableName: 'Balances',
     timestamps: false,

@@ -24,6 +24,10 @@ class BalancesService {
     async getUserBalanceById ({ balanceId }) {
         return this.BalancesModel.find({ where: { id: balanceId } })
     }
+
+    async deleteUserBalanceByBalanceId ({ id }) {
+        return this.BalancesModel.destroy({ where: { id } })
+    }
 }
 
 export default new BalancesService()

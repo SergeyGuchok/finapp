@@ -55,6 +55,23 @@ class BalancesController {
             return { status: 400, errors: [e] }
         }
     }
+
+    async deleteUserBalance ({ username, balanceId }) {
+        try {
+            const { id } = await this.UserService.getUserByUsername({ username })
+            const balances = await this.BalancesService.getUserBalancesByUsername({ userId: id })
+
+            if (balances.length > 1) {
+                await this.BalancesService.deleteUserBalanceByBalanceId({ id: balanceId })
+                return { status: 401, content: 'Balance was deleted' }
+            }
+
+            return { status: 400, errors: 'You can`t have less than 1 balance' }
+
+        } catch (e) {
+            return { status: 400, errors: [e] }
+        }
+    }
 }
 
 export default new BalancesController()
