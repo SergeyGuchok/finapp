@@ -35,6 +35,14 @@ const User = sequelize.define('User', {
     unseen_categories: {
         type: DataTypes.JSON,
         defaultValue: [],
+    },
+    balance_sort: {
+        type: DataTypes.JSON,
+        defaultValue: [],
+    },
+    categories_sort: {
+        type: DataTypes.JSON,
+        defaultValue: [],
     }
 }, {
     tableName: 'Users',

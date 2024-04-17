@@ -12,6 +12,22 @@ router.get('/', async (req, res) => {
     generateResponse(res, await TransactionsController.getUserTransactions({ username, page, perPage, startDate, endDate }))
 })
 
+router.get('/:id', async (req, res) => {
+    const { user } = req
+    const { username } = user
+    const { id } = req.params
+
+    generateResponse(res, await TransactionsController.getUserTransactionById({ username, id }))
+})
+
+router.get('/history', async (req, res) => {
+    const { user } = req
+    const { username } = user
+    const { startDate = null, endDate = null } = req.query
+
+    generateResponse(res, await TransactionsController.generateUserHistory({ username, endDate, startDate }))
+})
+
 router.post('/', async (req, res) => {
     const { user } = req
     const { username } = user

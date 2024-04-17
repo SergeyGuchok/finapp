@@ -23,7 +23,7 @@ const Transaction = sequelize.define('Transaction', {
     type: {
         type: DataTypes.ENUM,
         allowNull: false,
-        values: ['withdrawal', 'deposit', 'expenses']
+        values: ['transfer', 'deposit', 'expenses']
     },
     created_at:{
         type: DataTypes.DATE,
@@ -34,6 +34,23 @@ const Transaction = sequelize.define('Transaction', {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,
         allowNull: false
+    },
+    user_created_id: {
+        type: DataTypes.DATE,
+        defaultValue: DataTypes.NOW,
+        allowNull: false
+    },
+    description: {
+        type: DataTypes.STRING,
+        defaultValue: null,
+    },
+    recipient_balance_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    balance_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
     }
 }, {
     tableName: 'Transactions',

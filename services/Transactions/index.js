@@ -19,12 +19,15 @@ class TransactionsService {
             }
         }
 
-        console.log('-------------')
-
-        console.log(paginate(where, { page, perPage }))
-        console.log('-------------')
-
         return this.TransactionsModel.findAll(paginate(where, { page, perPage }))
+    }
+
+    async getUserTransactionsWithinADate ({ userId, startDate, endDate }) {
+        return this.TransactionsModel.findAll({ where: { user_id: userId, user_created_id: { $between: [startDate, endDate] } } })
+    }
+
+    async getUserTransactionById ({ userId, id }) {
+        return this.TransactionsModel.findOne({ where: { user_id: userId, id } })
     }
 
     async createUserTransaction ({ data, userId }) {

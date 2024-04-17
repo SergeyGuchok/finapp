@@ -7,7 +7,6 @@ class UserService {
         this.UserCategoryModel = UserCategory
     }
 
-
     async createUser ({ email, username, password }) {
         const user = await this.UserModel.create({ email, username, password })
 

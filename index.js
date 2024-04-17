@@ -28,6 +28,7 @@ app.use(cors({
     origin: '*',
 }))
 
+
 app.use('/api/categories', authMiddleware, userCategoriesRoute)
 app.use('/api/transactions', authMiddleware, transactionsRoute)
 app.use('/api/balances', authMiddleware, balancesRoute)
