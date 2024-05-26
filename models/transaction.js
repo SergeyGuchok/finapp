@@ -14,7 +14,7 @@ const Transaction = sequelize.define('Transaction', {
     },
     category_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
     },
     amount: {
         type: DataTypes.DECIMAL,
@@ -35,22 +35,23 @@ const Transaction = sequelize.define('Transaction', {
         defaultValue: DataTypes.NOW,
         allowNull: false
     },
-    user_created_id: {
+    user_created_at: {
         type: DataTypes.DATE,
         defaultValue: DataTypes.NOW,
         allowNull: false
     },
     description: {
         type: DataTypes.STRING,
+        allowNull: true,
         defaultValue: null,
     },
     recipient_balance_id: {
         type: DataTypes.INTEGER,
-        allowNull: false
+        allowNull: true
     },
     balance_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
+        allowNull: true,
     }
 }, {
     tableName: 'Transactions',

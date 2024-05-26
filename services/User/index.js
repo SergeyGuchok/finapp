@@ -37,6 +37,18 @@ class UserService {
     async getUserByUsername ({ username }) {
         return this.UserModel.findOne({ where: { username } })
     }
+
+    async getUserSortingByUsername ({ username }) {
+        const user = await this.UserModel.findOne({ where: { username } })
+
+        if (!user) return null
+
+        return user.categories_sort
+    }
+
+    async updateUserSorting({ username, data }){
+        return this.UserModel.update({ categories_sort: data }, { where: { username } })
+    }
 }
 
 export default new UserService()

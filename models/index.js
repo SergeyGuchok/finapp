@@ -4,6 +4,7 @@ import Category from '#models/category'
 import UserCategory from '#models/userCategory'
 import ColorsCategory from '#models/colors'
 import Balance from '#models/balance'
+import SubcategorySort from "#models/subcategorySort";
 
 export default {
     User,
@@ -12,4 +13,5 @@ export default {
     UserCategory,
     ColorsCategory,
     Balance,
+    SubcategorySort,
 }

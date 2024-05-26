@@ -10,9 +10,10 @@ class TransactionsController {
     async getUserTransactions({ username, page, perPage, startDate, endDate }) {
         try {
             const { id } = await this.UserService.getUserByUsername({ username })
+            const count = await this.TransactionsService.getUserTransactionsCountByUserId({ userId: id })
             const transactions = await this.TransactionsService.getUserTransactions({ userId: id, page, perPage, startDate, endDate })
 
-            return { status: 200, content: transactions }
+            return { status: 200, content: { transactions, count } }
         } catch (e) {
             return { status: 400, errors: [e] }
         }

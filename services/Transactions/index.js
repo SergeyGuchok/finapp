@@ -8,6 +8,10 @@ class TransactionsService {
         this.TransactionsModel = TransactionsModel
     }
 
+    async getUserTransactionsCountByUserId ({ userId }){
+        return this.TransactionsModel.count({ where: { user_id: userId } })
+    }
+
     async getUserTransactions ({ userId, page, perPage, startDate, endDate }) {
         const where = {
             user_id: userId,
